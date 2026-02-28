@@ -1,0 +1,97 @@
+<graph id="MSI_processing">
+  <version>1.0</version>
+    
+  <node id="Resample">
+    <operator>S2Resampling</operator>
+    <sources>
+      <sourceProduct>${sourceProduct}</sourceProduct>
+    </sources>
+    <parameters>
+      <resolution>60</resolution>
+      <upsampling>Bilinear</upsampling>
+      <downsampling>Mean</downsampling>
+      <flagDownsampling>First</flagDownsampling>
+      <resampleOnPyramidLevels>true</resampleOnPyramidLevels>
+    </parameters>
+  </node>
+    
+  <node id="subset">
+    <operator>Subset</operator>
+    <sources>
+	<sourceProduct refid="Resample"/>
+    </sources>
+    <parameters>
+      <geoRegion>
+        POLYGON((19.120331 -34.081668, 19.120331 -33.983225, 19.293365 -33.983225, 19.293365 -34.081668, 19.120331 -34.081668))
+      </geoRegion>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+
+  <node id="Idepix.S2">
+    <operator>Idepix.S2</operator>
+    <sources>
+      <sourceProduct refid="Subset"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <copyToaReflectances>true</copyToaReflectances>
+      <copyFeatureValues>false</copyFeatureValues>
+      <computeMountainShadow>true</computeMountainShadow>
+      <computeCloudShadow>false</computeCloudShadow>
+      <computeCloudBuffer>true</computeCloudBuffer>
+      <computeCloudBufferForCloudAmbiguous>true</computeCloudBufferForCloudAmbiguous>
+      <cloudBufferWidth>2</cloudBufferWidth>
+      <demName>SRTM 3Sec</demName>
+    </parameters>
+  </node>
+    
+  <node id="BandMerge">
+    <operator>BandMerge</operator>
+    <sources>
+      <sourceProduct refid="Subset"/>
+      <sourceProduct.1 refid="Idepix.S2"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <geographicError>1.0E-5</geographicError>
+    </parameters>
+  </node>
+    
+  <node id="C2RCC">
+    <operator>c2rcc.msi</operator>
+    <sources>
+      <sourceProduct refid="BandMerge"/>
+    </sources>
+   <parameters>
+       <validPixelExpression>pixel_classif_flags.IDEPIX_CLEAR_WATER==1</validPixelExpression>
+       <salinity>0.5</salinity>
+       <temperature>20.0</temperature>
+       <ozone>330.0</ozone>
+       <press>1000.0</press>
+       <elevation>0.0</elevation>
+       <TSMfac>1.06</TSMfac>
+       <TSMexp>0.942</TSMexp>
+       <CHLexp>1.04</CHLexp>
+       <CHLfac>21.0</CHLfac>
+       <thresholdRtosaOOS>0.05</thresholdRtosaOOS>
+       <thresholdAcReflecOos>0.1</thresholdAcReflecOos>
+       <thresholdCloudTDown865>0.955</thresholdCloudTDown865>
+       <netSet>C2X-COMPLEX-Nets</netSet>
+       <outputAsRrs>true</outputAsRrs>
+       <useEcmwfAuxData>false</useEcmwfAuxData>
+       <deriveRwFromPathAndTransmittance>false</deriveRwFromPathAndTransmittance>
+       <useEcmwfAuxData>false</useEcmwfAuxData>
+       <outputRtoa>false</outputRtoa>
+       <outputRtosaGc>false</outputRtosaGc>
+       <outputRtosaGcAann>false</outputRtosaGcAann>
+       <outputRpath>false</outputRpath>
+       <outputTdown>false</outputTdown>
+       <outputTup>false</outputTup>
+       <outputAcReflectance>true</outputAcReflectance>
+       <outputRhown>false</outputRhown>
+       <outputOos>false</outputOos>
+       <outputKd>false</outputKd>
+       <outputUncertainties>false</outputUncertainties>
+   </parameters>
+  </node>
+</graph>
