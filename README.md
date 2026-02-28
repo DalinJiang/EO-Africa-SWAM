@@ -1,3 +1,6 @@
+
+<img width="1280" height="303" alt="project_header" src="https://github.com/user-attachments/assets/932438fe-a452-468e-9ed0-6c634efccdb6" />
+
 # EO-Africa R&D SWAM
 **SWAM**, stands for "*Sentinel 2 user-relevant water quality monitoring in small southern African water bodies*", is an European Space Agency (ESA) EO-Africa (https://www.eoafrica-rd.org) funded research project. 
 
@@ -47,7 +50,7 @@ In addition, a separate Jupyter Notebook can be used to estimate Chl-a and TSM f
 SWAM Chl-a and TSM data during 2015 and 2025 with a spatial resolution of 20 m for the six water bodies will be freely available upon publishing.
 
 ## 5. License
-
+The GPL-3.0 license is applied to the code.
 
 ## 6. Project PI
 * Marie Smith, CSIR, South Africa (MSmith2@csir.co.za)
