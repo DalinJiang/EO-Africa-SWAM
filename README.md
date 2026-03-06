@@ -4,15 +4,15 @@
 # EO-Africa R&D SWAM
 **SWAM**, stands for "*Sentinel 2 user-relevant water quality monitoring in small southern African water bodies*", is an European Space Agency (ESA) EO-Africa (https://www.eoafrica-rd.org) funded research project. 
 
-SWAM aimed to use the Sentinel-2 Multi-Spectral Instrument (MSI) high spatial resolution imagery to monitor water quality variables including chlorophyll-a (Chla) and total suspended matter (TSM) concentrations in small inland water bodies in the Western Cape Province, South Africa. As a starting poitnt, the project focused on six lakes and reservoirs that are key for drinking water, irrigation and recreations, including:
+SWAM aimed to use the Sentinel-2 Multi-Spectral Instrument (MSI) high spatial resolution imagery to monitor water quality variables including chlorophyll-a (Chla) and total suspended matter (TSM) concentrations in small inland water bodies in the Western Cape Province, South Africa. As a starting point, the project focused on six lakes and reservoirs that are key for drinking water, irrigation, biodiversity, and recreation, including:
 * Clanwilliam Dam (CW)
 * Misverstand Dam (MV)
 * Voëlvlei Dam (VV)
 * Theewaterskloof Dam (TW)
-* Lake Zeekoevlei (ZV)
-* Lake Rietvlei (RV)
+* Zeekoevlei (ZV)
+* Rietvlei (RV)
 
-This repository includes the Python code that developed and used during the SWAM project for Chl-a and TSM monitoring from Sentinel-2 MSI imagery.
+This repository includes the Python code that were developed and used during the SWAM project for Chl-a and TSM monitoring from Sentinel-2 MSI imagery.
 
 <img width="978" height="768" alt="image" src="https://github.com/user-attachments/assets/493bb2b5-d6df-42e8-8c45-f60123bd3f61" />
 
@@ -21,14 +21,14 @@ This repository includes the Python code that developed and used during the SWAM
 ### (i) Algorithm
 Chl-a concentration products were produced using the ACOLITE-RAdCor atmospherically corrected ([Vanhellemont & Ruddick 2016](https://articles.adsabs.harvard.edu/full/2016ESASP.740E..55V); [Castagna & Vanhellemont, 2025](https://doi.org/10.1364/ao.546766)) remote sensing reflectance product, and then deriving Chl-a using the Mixture Density Network (MDN) from [Pahlevan et al (2020)](https://doi.org/10.1016/j.rse.2019.111604). 
 ### (ii) Requirements
-Make sure that you have installed the [ESA SNAP](https://step.esa.int/main/download/snap-download/) (Version 12 is used here), and the IdePix S2-MSI plugin in SNAP. You also need to either cloned or copied an ACOLITE installation (we used acolite20250402) into your working directory, following the installation instructions from the [acolite github repository](https://github.com/acolite) 
+Make sure that you have either clones or copied an ACOLITE installation (we used acolite20250402) into your working directory, following the installation instructions from the [acolite github repository](https://github.com/acolite). Lastly you would also need a to clone [MDN-STREAM](https://github.com/STREAM-RS/MDN-STREAM), with useful instructions for setting up the appropriate conda environment provided at [MDN_tutorials](https://github.com/ryan-edward-oshea/MDN_tutorials/tree/main).
 
 <img width="1208" height="182" alt="image" src="https://github.com/user-attachments/assets/fe8fb8bd-c7b4-4b5f-b221-721afc7506e2" />
 
 
 ## 2. TSM
 ### (i) Algorithm
-TSM concentration products were produced using the remote sensing reflectance that derived from the Case 2 Regional CoastColour (C2RCC) atmopsheric correction processor ([Brockmann et al., 2016](https://articles.adsabs.harvard.edu/full/2016ESASP.740E..54B)) with the C2X-Complex neural network, and then deriving TSM using the [Jiang et al (2023)](https://doi.org/10.1016/j.isprsjprs.2023.09.020) algorithm with re-calibrated coefficients.  
+TSM concentration products were produced using the remote sensing reflectance that is derived from the Case 2 Regional CoastColour (C2RCC) atmopsheric correction processor ([Brockmann et al., 2016](https://articles.adsabs.harvard.edu/full/2016ESASP.740E..54B)) with the C2X-Complex neural network, and then deriving TSM using the [Jiang et al (2023)](https://doi.org/10.1016/j.isprsjprs.2023.09.020) algorithm with re-calibrated coefficients.  
 ### (ii) Requirements
 Make sure you have installed [ESA SNAP](https://step.esa.int/main/download/snap-download/) (Version 12 is used here), and the plugins of C2RCC and IdePix S2-MSI in SNAP.
 
@@ -47,7 +47,7 @@ For both Chl-a and TSM estimations, a multi-step Jupyter Notebook Python code ar
 In addition, a separate Jupyter Notebook can be used to estimate Chl-a and TSM for one Sentinel-2 MSI image (*Jupyter Notebook: xx_working_example.ipynb*).
 
 ## 4. Data availability
-SWAM Chl-a and TSM data during 2015 and 2025 with a spatial resolution of 20 m for the six water bodies will be freely available upon publishing.
+SWAM Sentinel-2 datasets for Chl-a and TSM with a spatial resolution of 20 m are available for six water bodies from August 2015 to August 2025. Access free and open via [Zenodo](https://doi.org/10.5281/zenodo.18670504).
 
 ## 5. License
 The GPL-3.0 license is applied to the code.
@@ -57,8 +57,10 @@ The GPL-3.0 license is applied to the code.
 * Dalin Jiang, University of Stirling, UK (dalin.jiang@stir.ac.uk)
 
 ## 7. References
-* Vanhellemont, Q., & Ruddick, K. (2016, May). Acolite for Sentinel-2: Aquatic applications of MSI imagery. In Proceedings of the 2016 ESA living planet symposium, Prague, Czech Republic (Vol. 9).
-* Castagna, A., & Vanhellemont, Q. (2025). A generalized physics-based correction<? TeX\break?> for adjacency effects. Applied Optics, 64(10), 2719-2743.
-* Pahlevan, N., Smith, B., Schalles, J., Binding, C., Cao, Z., Ma, R., ... & Stumpf, R. (2020). Seamless retrievals of chlorophyll-a from Sentinel-2 (MSI) and Sentinel-3 (OLCI) in inland and coastal waters: A machine-learning approach. Remote Sensing of Environment, 240, 111604.
 * Brockmann, C., Doerffer, R., Peters, M., Kerstin, S., Embacher, S., & Ruescas, A. (2016, August). Evolution of the C2RCC neural network for Sentinel 2 and 3 for the retrieval of ocean colour products in normal and extreme optically complex waters. In Living planet symposium (Vol. 740, p. 54).
+* Castagna, A., & Vanhellemont, Q. (2025). A generalized physics-based correction<? TeX\break?> for adjacency effects. Applied Optics, 64(10), 2719-2743.
 * Jiang, D., Matsushita, B., Pahlevan, N., Gurlin, D., Fichot, C. G., Harringmeyer, J., ... & Spyrakos, E. (2023). Estimating the concentration of total suspended solids in inland and coastal waters from Sentinel-2 MSI: A semi-analytical approach. ISPRS Journal of Photogrammetry and Remote Sensing, 204, 362-377.
+* Pahlevan, N., Smith, B., Schalles, J., Binding, C., Cao, Z., Ma, R., ... & Stumpf, R. (2020). Seamless retrievals of chlorophyll-a from Sentinel-2 (MSI) and Sentinel-3 (OLCI) in inland and coastal waters: A machine-learning approach. Remote Sensing of Environment, 240, 111604.
+* STREAM_RS (2026). MDN_Stream [Software]. Github. https://github.com/STREAM-RS/MDN-STREAM
+* Vanhellemont, Q (2026). Acolite [Software]. GitHub. https://github.com/acolite/acolite
+* Vanhellemont, Q., & Ruddick, K. (2016, May). Acolite for Sentinel-2: Aquatic applications of MSI imagery. In Proceedings of the 2016 ESA living planet symposium, Prague, Czech Republic (Vol. 9).
