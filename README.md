@@ -21,7 +21,7 @@ This repository includes the Python code that were developed and used during the
 ### (i) Algorithm
 Chl-a concentration products were produced using the ACOLITE-RAdCor atmospherically corrected ([Vanhellemont & Ruddick 2016](https://articles.adsabs.harvard.edu/full/2016ESASP.740E..55V); [Castagna & Vanhellemont, 2025](https://doi.org/10.1364/ao.546766)) remote sensing reflectance product, and then deriving Chl-a using the Mixture Density Network (MDN) from [Pahlevan et al (2020)](https://doi.org/10.1016/j.rse.2019.111604). 
 ### (ii) Requirements
-Make sure that you have either clones or copied an ACOLITE installation (we used acolite20250402) into your working directory, following the installation instructions from the [acolite github repository](https://github.com/acolite). Lastly you would also need a to clone [MDN-STREAM](https://github.com/STREAM-RS/MDN-STREAM), with useful instructions for setting up the appropriate conda environment provided at [MDN_tutorials](https://github.com/ryan-edward-oshea/MDN_tutorials/tree/main).
+Make sure that you have either cloned or copied an ACOLITE installation (we used acolite20250402) into your working directory, following the installation instructions from the [acolite github repository](https://github.com/acolite). You would also need to clone [MDN-STREAM](https://github.com/STREAM-RS/MDN-STREAM), with useful instructions for setting up the appropriate conda environment provided at [MDN_tutorials](https://github.com/ryan-edward-oshea/MDN_tutorials/tree/main).
 
 <img width="1208" height="182" alt="image" src="https://github.com/user-attachments/assets/fe8fb8bd-c7b4-4b5f-b221-721afc7506e2" />
 
